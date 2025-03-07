@@ -116,10 +116,15 @@ public class FunWith2DArrays {
         int totalRow = 0;
         int totalCol = 0;
         int totalDiag = 0;
+        int temp = 0;
         for(int i = 0; i < arr.length; i++) {
             int rowSum = 0;
             for(int j = 0; j < arr[0].length; j++) {
+                if(temp == arr[i][j]) {
+                    return false;
+                }
                 rowSum += arr[i][j];
+                temp = arr[i][j];
             }
             System.out.println(rowSum);
             if(totalRow == 0) {
@@ -132,7 +137,11 @@ public class FunWith2DArrays {
         for(int i = 0; i < arr[0].length; i++) {
             int colSum = 0;
             for(int j = 0; j < arr.length; j++) {
+                if(temp == arr[j][i]) {
+                    return false;
+                }
                 colSum += arr[j][i];
+                temp = arr[j][i];
             }
             if(totalCol == 0) {
                 totalCol = colSum;
@@ -142,13 +151,21 @@ public class FunWith2DArrays {
             }
         }
         for(int i = 0; i < arr[0].length; i++) {
+            if(temp == arr[i][i]) {
+                return false;
+            }
             diagSum += arr[i][i];
+            temp = arr[i][i];
         }
         if(totalDiag == 0) {
             totalDiag = diagSum;
         }
         for(int i = 0; i < arr.length; i++) {
+            if(temp == arr[i][arr[i].length - 1 - i]) {
+                return false;
+            }
             diagSum2 += arr[i][arr[i].length - 1 - i];
+            temp = arr[i][arr[i].length - 1 - i];
         }
         if(diagSum != diagSum2) {
             return false;
