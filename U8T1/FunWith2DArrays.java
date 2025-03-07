@@ -90,4 +90,74 @@ public class FunWith2DArrays {
         }
         return colMajor;
     }
+
+    public static boolean consecutive(int[][] arr) { /* implement this method */ 
+        for(int i = 0; i < arr.length; i++) {
+            for(int j = 0; j < arr[0].length - 1; j++) {
+                if(arr[i][j] == arr[i][j + 1]) {
+                    return true;
+                }
+            }
+        }
+        for(int i = 0; i < arr.length - 1; i++) {
+            for(int j = 0; j < arr[0].length; j++) {
+                if(arr[i][j] == arr[i + 1][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean magicSquare(int[][] arr) { /* implement this method */ 
+        //check rows
+        int diagSum = 0;
+        int diagSum2 = 0;
+        int totalRow = 0;
+        int totalCol = 0;
+        int totalDiag = 0;
+        for(int i = 0; i < arr.length; i++) {
+            int rowSum = 0;
+            for(int j = 0; j < arr[0].length; j++) {
+                rowSum += arr[i][j];
+            }
+            System.out.println(rowSum);
+            if(totalRow == 0) {
+                totalRow = rowSum;
+            }
+            if(totalRow != rowSum) {
+                return false;
+            }
+        }
+        for(int i = 0; i < arr[0].length; i++) {
+            int colSum = 0;
+            for(int j = 0; j < arr.length; j++) {
+                colSum += arr[j][i];
+            }
+            if(totalCol == 0) {
+                totalCol = colSum;
+            }
+            if(totalRow != colSum) {
+                return false;
+            }
+        }
+        for(int i = 0; i < arr[0].length; i++) {
+            diagSum += arr[i][i];
+        }
+        if(totalDiag == 0) {
+            totalDiag = diagSum;
+        }
+        for(int i = 0; i < arr.length; i++) {
+            diagSum2 += arr[i][arr[i].length - 1 - i];
+        }
+        if(diagSum != diagSum2) {
+            return false;
+        }
+        if(totalRow == totalCol && totalCol == totalDiag) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
