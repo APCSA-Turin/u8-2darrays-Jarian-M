@@ -35,6 +35,15 @@ public class ItemGrid {
      */
     public double findAverage() {
         /* to be implemented */
+        int sum = 0;
+        int count = 0;
+        for(Item[] row : grid) {
+           for(Item col : row) {
+              sum += col.getValue();
+              count++;
+           }
+        }
+        return (double)sum / count;     
     }
 
     /** Compares the item in row r and column c to the items to its
